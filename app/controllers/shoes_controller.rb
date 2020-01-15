@@ -5,14 +5,15 @@ class ShoesController < ApplicationController
        erb :'shoes/index'
 
     end
+    get '/shoes/new' do
+        erb :'shoes/new'
+    end
 
     get '/shoes/:id' do
         @shoe = Shoe.find_by(id: params[:id])
         erb :'shoes/show'
     end
-    get '/shoes/new' do
-        erb :'shoes/new'
-    end
+   
     
     get '/shoes/:id' do
         @shoe = Shoe.find_by(id: params[:id])
