@@ -25,7 +25,7 @@ class ShoesController < ApplicationController
     
     post '/shoes' do
         shoe = Shoe.create(params[:shoe])
-        redirect "/spells/#{shoe.id}"
+        redirect "/shoes/#{shoe.id}"
         # if shoe.save
         # else
         # end
