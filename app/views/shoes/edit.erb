@@ -1,0 +1,15 @@
+<h1>Edit <%= @shoe.category %></h1>
+
+<form action="/shoes/<%= @shoe.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  Category:
+  <input type="text" name="shoe[category]" value="<%= @shoe.category %>">
+  <br>
+  <br>
+  Size:
+  <input type="text" name="shoe[size]" value="<%= @shoe.size %>">
+  <br />
+  <br />
+  <input type="submit" value="Edit A Shoes!">
+</form>
+<br />
