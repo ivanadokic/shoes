@@ -1,34 +1,34 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
  
-    get '/users' do
+  get '/users' do
       erb :"/users/index.html"
     end
     
+    #create new user
     get '/signup' do
       erb :"/users/new.html"
     end
 
     post "/signup" do
         #check that the fields are filled in
-        if params[:user].values.any? {|v|v.blank?}
+      if params[:user].values.any? {|v|v.blank?}
         redirect '/signup'
 
       #check that the username isn't taken
-     elsif User.find_by(username: params[:user][:username])
-      redirect '/signup'
-     else
+      elsif User.find_by(username: params[:user][:username])
+        redirect '/signup'
+      else
       # Create a new user
-     user = User.create(params[:user])
+        user = User.create(params[:user])
 
-      # log them in
-     session[:user_id] = user.id
-     binding.pry
-     end
+      # log them in, look at session hash and add a key to the session hash we call it user_id
+        session[:user_id] = user.id
 
       # redirect them to a show page
-       redirect "/users/#{user.id}"
-     end
+         redirect "/users/#{user.id}"
     end
+  end
+  
 
     get "/users/:id" do
       erb :"/users/show.html"
@@ -42,15 +42,17 @@ class UserController < ApplicationController
     get "/login" do
      erb :"/users/login.html" 
     end
+
     post "/login" do
      #did they give a valid username?
-     user = User.find_by(username: params[:user][:username])
-     if user && user.authenticate(params[:user][:password])
+      user = User.find_by(username: params[:user][:username])
+      if user && user.authenticate(params[:user][:password])
         #they succesifully logged in!
         session[:user_id] = user.id
         redirect "/users/#{user.id}"
-     else
+      else
         redirect "/login"
+      end
     end
 
     #did they give a valid password?

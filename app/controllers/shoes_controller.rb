@@ -3,8 +3,8 @@ class ShoesController < ApplicationController
     get '/shoes' do
        @shoes = Shoe.all
        erb :'shoes/index'
-
     end
+    
     get '/shoes/new' do
         erb :'shoes/new'
     end

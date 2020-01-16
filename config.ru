@@ -5,6 +5,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 
-run ApplicationController
 use ShoesController
-use UserController
+use UsersController
+run ApplicationController
