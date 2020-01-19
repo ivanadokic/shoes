@@ -1,4 +1,9 @@
 <h1>The current user is
-  <%= User.find_by_id(session[:user_id]).username%>
-
+  <%= @user.username%>
   </h1>
+  <p>Keep track of shoes you like</p>
+
+  <h2><a href="/shoes">Shoes collection</a></h2> 
+  <h2><a href="/shoes/new">Add a new shoes</a></h2>
+  <p><a href="/logout">logout</a></p>
+ 

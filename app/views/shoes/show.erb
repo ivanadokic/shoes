@@ -10,3 +10,11 @@
 <h2>Brand:</h2>
 <h3><%= @shoe.brand %></h3>
 
+<form action="/shoes/<%= @shoe.id%>/edit" method="get">
+  <input type="submit" value="Edit A Shoes!" >  
+</form>
+
+<form action="/shoes/<%= @shoe.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">  
+  <input type="submit" value="Delete A Shoes!" >  
+</form>

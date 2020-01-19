@@ -1,4 +1,4 @@
-<h1>All shoes:</h1>
+<h1>Shoes collection:</h1>
 
 <% @shoes.each_with_index do |shoe, index| %>
   <a href="/shoes/<%= shoe.id %>"><%= "#{index + 1}. " + shoe.category  %></a>

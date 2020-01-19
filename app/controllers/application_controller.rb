@@ -19,8 +19,8 @@ class ApplicationController < Sinatra::Base
     #memorization
     end
 
-  def logged_in?
-  !!current_user 
+    def logged_in?
+     !!current_user 
+    end
   end
- end
 end

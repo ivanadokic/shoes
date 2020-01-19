@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
- 
-  get '/users' do
-      erb :"/users/index.html"
-    end
-    
-    #create new user
+   #create new user
     get '/signup' do
       erb :"/users/new.html"
     end
@@ -16,27 +11,28 @@ class UsersController < ApplicationController
 
       #check that the username isn't taken
       elsif User.find_by(username: params[:user][:username])
-        redirect '/signup'
+        redirect '/login'
       else
       # Create a new user
-        user = User.create(params[:user])
+        @user = User.create(params[:user])
 
       # log them in, look at session hash and add a key to the session hash we call it user_id
-        session[:user_id] = user.id
-
+        session[:user_id] = @user.id
+  
       # redirect them to a show page
-         redirect "/users/#{user.id}"
+         redirect "/users"
     end
   end
   
 
-    get "/users/:id" do
+    get "/users" do
+      @user = current_user
       erb :"/users/show.html"
     end
 
     get "/logout" do
      session.clear
-     redirect "/signup"
+     redirect "/"
     end
 
     get "/login" do
@@ -46,19 +42,28 @@ class UsersController < ApplicationController
     post "/login" do
      #did they give a valid username?
       user = User.find_by(username: params[:user][:username])
+  
       if user && user.authenticate(params[:user][:password])
         #they succesifully logged in!
         session[:user_id] = user.id
-        redirect "/users/#{user.id}"
+ 
+        redirect "/users"
       else
         redirect "/login"
+        
       end
+    end
+
+    get "/logout" do
+      session.destroy
+      redirect "/"
     end
 
     #did they give a valid password?
 
     # GET: /users/5
   get "/users/:id" do
+    @user = User.find_by(id: params[:id])
     erb :"/users/show.html"
   end
 
@@ -76,5 +81,7 @@ class UsersController < ApplicationController
   delete "/users/:id/delete" do
     redirect "/users"
   end
+
+
   
 end
