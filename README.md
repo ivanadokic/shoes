@@ -12,23 +12,23 @@ For this assessment i created a [CRUD], [MVC] Shoes app using Sinatra. This app 
 It allows the user to input and display category, size and brand of the shoes. A user is able to add, update, delete and list all shoes, shoe brand, shoe category and shoe size.
 This is how all four CRUD actions were implemented: 
 
-Create
+### Create
 Now that we have the database and model set up, it's time to set up the ability to create shoes.
 
 After a route in controller was created, get '/articles/new', that renders the new.erb view.
 
 We need to create an ERB file in the views directory, new.erb, with a form that POSTs to a controller action, /articles. The controller action should use the Create CRUD action to create the article and save it to the database. When the form on new.erb is submitted, the action, pointing to /articles, will redirect to another action which will trigger a render of a show.erb file automatically. Before we can fully test if our form is working, we need to create that show.erb file, as our site will currently crash upon submission.
 
-Read
+### Read
 The Read CRUD action corresponds to two different controller actions: show and index. The show action should render the ERB view show.erb, which shows an individual show. The index action should render the ERB view index.erb, which shows a list of all of the shoes.
 
-Create
+### Create
 Create the get '/shoes' controller action. This action should use Active Record to grab all of the shoes and store them in an instance variable, @shoes. Then, it should render the index.erb view. That view should use ERB to iterate over @shoes and render them on the page.
 
-Update
+### Update
 The Update CRUD action corresponds to the edit controller action and view.
 
-Delete
+### Delete
 The Delete CRUD action corresponds to the delete controller action, delete '/shoes/:id'. To initiate this action, we'll add a "delete" button to the show page. 
 
 ## <a id="requirements">Project Requirements</a>
