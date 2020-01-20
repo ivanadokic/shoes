@@ -45,7 +45,6 @@ The Delete CRUD action corresponds to the delete controller action, delete '/sho
 
 
 ## <a id="resources">Resources</a>
-
 [CRUD]: https://learn.co/tracks/full-stack-web-development-v6/orms-and-activerecord/activerecord/activerecord-crud-lab
 [CMS]: http://www.businessdictionary.com/definition/content-management-system-CMS.html
 [technical interviews]: https://www.brightnetwork.co.uk/career-path-guides/technology-it-software-development/five-ways-stand-out-your-technology/what-expect-technical-interview/
@@ -67,3 +66,4 @@ The Delete CRUD action corresponds to the delete controller action, delete '/sho
 [Securing Passwords in Sinatra]: https://learn.co/tracks/full-stack-web-development-v6/sinatra/activerecord/securing-passwords-in-sinatra
 [Mechanics of Sessions]: https://learn.co/tracks/full-stack-web-development-v6/sinatra/sessions/mechanics-of-sessions
 [Video: Sinatra app from scratch]: https://learn.co/tracks/full-stack-web-development-v6/sinatra/activerecord/video-review-authentication
+
