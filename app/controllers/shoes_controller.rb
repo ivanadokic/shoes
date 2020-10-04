@@ -17,14 +17,15 @@ class ShoesController < ApplicationController
         end
     end
     
+#new Action
     get '/shoes/:id' do
         @shoe = Shoe.find_by(id: params[:id])
-        redirect '/shoes' if @shoe.nil?
+        is_nil?
         if @shoe.user == current_user
         #check if this shoe's user is the current_user
-        erb :'shoes/show'
+         erb :'shoes/show'
         else 
-        redirect "/shoes"
+            redirect "/shoes"
         end
     end
     
@@ -35,39 +36,43 @@ class ShoesController < ApplicationController
             redirect "/shoes/new"
         else
          shoe.save
-         redirect "/shoes/#{shoe.id}"
+            redirect "/shoes/#{shoe.id}"
         end
     end
     
     get '/shoes/:id/edit' do
         @shoe = Shoe.find_by(id: params[:id])
-        redirect '/shoes' if @shoe.nil?
-        if @shoe.user == current_user
-        erb :'shoes/edit'
-        else
-            redirect "/shoes"
-        end
+        is_nil?
+        is_authorized?(@shoe,"/shoes")
+        
+            erb :'shoes/edit'
     end
     
     put '/shoes/:id' do
         @shoe = Shoe.find_by(id: params[:id])
-        redirect '/shoes' if @shoe.nil?
-        if @shoe.user == current_user
+        is_nil?
+        is_authorized?(@shoe,"/shoes")
            @shoe.update(params[:shoe])
            redirect "/shoes/#{@shoe.id}"
-        else
-           redirect "/shoes"
-        end
+      
     end
     
+    #Delete Action
     delete '/shoes/:id' do
         shoe = Shoe.find_by(id: params[:id])
-        redirect '/shoes' if @shoe.nil?
-        if @shoe.user == current_user
+        is_nil?
+        is_authorized?(shoe,"/shoes")
+        
           shoe.destroy
           redirect "/shoes"
-        else
-            redirect "/shoes"
-        end
+        
     end
+
+    private
+    def is_nil?
+        redirect '/shoes' if @shoe.nil?
+    end
+
+
+
 end

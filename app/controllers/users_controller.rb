@@ -8,7 +8,6 @@ class UsersController < ApplicationController
         #check that the fields are filled in
       if params[:user].values.any? {|v|v.blank?}
         redirect '/signup'
-
       #check that the username isn't taken
       elsif User.find_by(username: params[:user][:username])
         redirect '/login'
@@ -58,8 +57,6 @@ class UsersController < ApplicationController
       session.destroy
       redirect "/"
     end
-
-    #did they give a valid password?
 
     # GET: /users/5
   get "/users/:id" do

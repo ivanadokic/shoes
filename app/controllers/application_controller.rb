@@ -19,8 +19,17 @@ class ApplicationController < Sinatra::Base
     #memorization
     end
 
+   def is_authorized?(record, path)
+    unless record.user == current_user
+      redirect path
+    end
+  end
+
+
     def logged_in?
      !!current_user 
     end
   end
+
+  
 end
