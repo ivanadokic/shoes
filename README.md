@@ -1,4 +1,4 @@
-# Shoes - Sinatra Content Management System App
+# Shoes - Sinatra Content Management System (CMS) App
 
 ## Overview
 
