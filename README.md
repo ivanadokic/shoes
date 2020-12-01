@@ -13,7 +13,7 @@
 
 For this assessment i created a [CRUD], [MVC] Shoes app using Sinatra. This app is a custom app that is created to track shoes. Essentially, its a Content Management System [CMS]. 
 It allows the user to input and display category, size and brand of the shoes. A user is able to add, update, delete and list all shoes, shoe brand, shoe category and shoe size.
-This is how all four CRUD actions were implemented: 
+This is how all four CRUD actions were implemented :
 
 ### Create
 Now that we have the database and model set up, it's time to set up the ability to create shoes.
